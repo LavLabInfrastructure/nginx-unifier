@@ -1,0 +1,9 @@
+certs/*
+
+html
+
+# ignore all configs that are not generic nginx configs
+*-conf
+!nginx/nginx-conf
+nginx/nginx-conf/*
+!nginx/nginx-conf/upgrade-http.conf

@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./html/index.html:/var/www/lavlab/index.html
+      - ${CERT_DIR:-./certs/}:/etc/nginx/ssl:ro
+    depends_on:
+      - xnat
+      - omeroweb
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+
+#static web files in temp filesys
+volumes:
+  static:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
