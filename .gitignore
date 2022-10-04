@@ -7,3 +7,7 @@ html
 !nginx/nginx-conf
 nginx/nginx-conf/*
 !nginx/nginx-conf/upgrade-http.conf
+
+# ignore instance data
+*-data/
+DATA2/
