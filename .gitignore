@@ -1,13 +1,12 @@
-certs/*
-
-html
+athena/certs/*
+athena/html/*
 
 # ignore all configs that are not generic nginx configs
 *-conf
-!nginx/nginx-conf
-nginx/nginx-conf/*
-!nginx/nginx-conf/upgrade-http.conf
+!athena/nginx/nginx-conf
+athena/nginx/nginx-conf/*
+!athena/nginx/nginx-conf/default.conf
+!athena/nginx/optional-conf
 
 # ignore instance data
-*-data/
-DATA2/
+instance/

@@ -5,7 +5,6 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - ./html/index.html:/var/www/lavlab/index.html
       - ${CERT_DIR:-./certs/}:/etc/nginx/ssl:ro
     depends_on:
       - xnat
