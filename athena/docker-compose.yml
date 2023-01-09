@@ -1,26 +1,30 @@
 version: '3.7'
 
 services:
-
   nginx:
-    build: ./nginx
+    #image: nginx:${NGINX_VERSION:-1.19-alpine-perl}
+    build: ../../nginxLLAB
     volumes:
+      - ./configs/nginx-conf/local:/etc/nginx/conf.d/local
+      # - ./configs/nginx-conf/nginx.conf:/etc/nginx/nginx.conf
+
       - ${CERT_DIR:-./certs/}:/etc/nginx/ssl:ro
-    depends_on:
-      - xnat
-      - omeroweb
+      - "${NGINX_LOG_DIR:-./instance/logs/}/nginx/:/var/log/nginx/:rw"
+
+      - nginx-conf:/etc/nginx/conf.d/volume
+
     ports:
       - "80:80"
       - "443:443"
+
     networks:
       - frontend
 
 networks:
   frontend:
 
-#static web files in temp filesys
 volumes:
-  static:
+  nginx-conf:
     driver_opts:
       type: tmpfs
       device: tmpfs

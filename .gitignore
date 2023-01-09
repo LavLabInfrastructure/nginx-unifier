@@ -1,12 +1,17 @@
-athena/certs/*
-athena/html/*
 
-# ignore all configs that are not generic nginx configs
+
+# ignore all configs that are not mox or generic nginx configs
 *-conf
-!athena/nginx/nginx-conf
-athena/nginx/nginx-conf/*
-!athena/nginx/nginx-conf/default.conf
-!athena/nginx/optional-conf
+!athena/configs/nginx-conf
+!athena/configs/excluded-nginx-conf
+athena/configs/nginx-conf/local/*
+!athena/configs/nginx-conf/nginx.conf
+!athena/configs/mox-conf-example/*
 
 # ignore instance data
+.env
+certs/*
 instance/
+
+# keep mox directories for permissions
+athena/configs/mox-instance/*
