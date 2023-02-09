@@ -10,8 +10,8 @@ athena/configs/nginx-conf/local/*
 
 # ignore instance data
 .env
-certs/*
 instance/
+athena/certs/*
 
 # keep mox directories for permissions
 athena/configs/mox-instance/*
