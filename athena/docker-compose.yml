@@ -6,12 +6,11 @@ services:
     restart: unless-stopped
 
     volumes:
-      - ./configs/nginx-conf/local:/etc/nginx/conf.d/local
-
       - ${CERT_DIR:-./certs}/local:/etc/nginx/ssl:ro
-      - "${NGINX_LOG_DIR:-./instance/logs/}/nginx/:/var/log/nginx/:rw"
+      - ${LOG_DIR:-./instance/logs}/nginx/:/var/log/nginx/:rw
+      - ${NGINX_CONF_DIR:-./configs/nginx-conf}/local:/etc/nginx/conf.d/local
+      - ${NGINX_CONF_DIR:-./configs/nginx-conf}/nginx.conf:/etc/nginx/nginx.conf
 
-      - nginx-conf:/etc/nginx/conf.d/volume
 
     ports:
       - "80:80"
