@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - ${CERT_DIR:-./certs}/local:/etc/nginx/ssl:ro
+      - ${CERT_DIR:-./certs}:/etc/nginx/ssl:ro
       - ${LOG_DIR:-./instance/logs}/nginx/:/var/log/nginx/:rw
       - ${NGINX_CONF_DIR:-./configs/nginx-conf}/local:/etc/nginx/conf.d/local
       - ${NGINX_CONF_DIR:-./configs/nginx-conf}/nginx.conf:/etc/nginx/nginx.conf
@@ -21,9 +21,3 @@ services:
 
 networks:
   frontend:
-
-volumes:
-  nginx-conf:
-    driver_opts:
-      type: tmpfs
-      device: tmpfs
